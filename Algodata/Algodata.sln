@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algodata", "Algodata\Algoda
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "classexc-29-04", "classexc-29-04\classexc-29-04.csproj", "{76114892-8343-42C7-A2DC-5762F5E3E7BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HelloWorld", "HelloWorld\HelloWorld.csproj", "{4D61C3C2-61D3-4AC8-A72A-5DF34AE9DF26}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{76114892-8343-42C7-A2DC-5762F5E3E7BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{76114892-8343-42C7-A2DC-5762F5E3E7BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{76114892-8343-42C7-A2DC-5762F5E3E7BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D61C3C2-61D3-4AC8-A72A-5DF34AE9DF26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D61C3C2-61D3-4AC8-A72A-5DF34AE9DF26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D61C3C2-61D3-4AC8-A72A-5DF34AE9DF26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D61C3C2-61D3-4AC8-A72A-5DF34AE9DF26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
