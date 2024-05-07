@@ -1,15 +1,18 @@
-namespace TurboCollections.Test;
+using NUnit.Framework;
+using TurboCollections;
 
-public class Tests
+namespace TurboCollections.Test
 {
-    [SetUp]
-    public void Setup()
+    public class TurboMathsTests
     {
-    }
+        [Test]
+        public void SayHelloExists()
+        {
+            // Invoke SayHello method
+            TurboMaths.SayHello();
 
-    [Test]
-    public void Test1()
-    {
-        Assert.Pass();
+            // Explicitly pass the test
+            Assert.Pass();
+        }
     }
 }
