@@ -1,6 +1,9 @@
-namespace P1_3_Iterator
+using System;
+using System.Collections.Generic;
+
+namespace P1_3_Iterator.TurboCollections
 {
-    public static class TurboMaths
+    public static class TurboMaths2
     {
         // Returns all Even Numbers until the given number.
         public static List<int> GetEvenNumbersList(int maxNumber)

@@ -23,6 +23,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\HelloWorld\HelloWorld.csproj" />
+      <ProjectReference Include="..\P1_3_Iterator\P1_3_Iterator.csproj" />
     </ItemGroup>
 
 </Project>
