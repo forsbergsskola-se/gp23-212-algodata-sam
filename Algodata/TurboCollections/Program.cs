@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 public class TurboLinkedStack<T> : IEnumerable<T> {
     class Node {
@@ -8,100 +10,79 @@ public class TurboLinkedStack<T> : IEnumerable<T> {
     Node LastNode;
 
     public void Push(T item) {
-        throw new NotImplementedException();
-        // Insert Code from AddNumber Example in #4 here
+        Node newNode = new Node { Value = item, Previous = LastNode };
+        LastNode = newNode;
     }
 
     public T Peek() {
-        throw new NotImplementedException();
-        // Return the Value of Last Node here.
+        if (LastNode == null) throw new InvalidOperationException("Stack is empty");
+        return LastNode.Value;
     }
 
-    public T Pop()
-    {
-        throw new NotImplementedException();
-        // 1. Save the Last Node locally so we can return the value later.
-        // 2. Now, assign the Last Node's Previous Node to be the Last Node.
-        // -- This effectively removes the previously Last Node of the Stack
-        // -- Imagine LastNode is customer 436
-        // -- -- who remembered that customer 435 was before him.
-        // -- We assign that before customer 435 to LastNode.
-        // -- -- 435 knows that 434 was before him.
-        // -- -- But he has no memory of customer 436.
-
-        // Now, return the Value of the Node that you cached in Step 1.
+    public T Pop() {
+        if (LastNode == null) throw new InvalidOperationException("Stack is empty");
+        Node nodeToReturn = LastNode;
+        LastNode = LastNode.Previous;
+        return nodeToReturn.Value;
     }
 
     public void Clear() {
-        // This one is incredibly easy. Just assign null to Field LastNode
-        // -- This is like pretending you never new that there is any last customer.
-        // -- by forgetting the latest customer, you forget them all.
+        LastNode = null;
     }
 
     public int Count {
-        get{
-            // Here, you need to do a while loop over all nodes
-            // Similar to the previous PrintAllNodes Function
-            // But instead of Printing Nodes, you just count how many Nodes you have visited
-            // Similar to this:
+        get {
             int count = 0;
-            while(false/* remove false and replace with correct condition...*/){
+            Node currentNode = LastNode;
+            while (currentNode != null) {
                 count++;
+                currentNode = currentNode.Previous;
             }
             return count;
         }
     }
 
     public IEnumerator<T> GetEnumerator() {
-        // This one is a bonus and a bit more difficult.
-        // You need to create a new class named Enumerator.
-        // You find the details below.
-        var enumerator = new Enumerator(LastNode);
-        return enumerator;
+        return new Enumerator(LastNode);
     }
-    
-    IEnumerator IEnumerable.GetEnumerator()
-    {
+
+    IEnumerator IEnumerable.GetEnumerator() {
         return GetEnumerator();
     }
 
     class Enumerator : IEnumerator<T> {
-        private Node CurrentNode;
-        private Node FirstNode;
+        private Node _currentNode;
         private Node _lastNode;
 
         public Enumerator(Node lastNode) {
             _lastNode = lastNode;
+            _currentNode = null;
         }
 
-        public bool MoveNext(){
-            throw new NotImplementedException();
-            // if we don't have a current node, we start with the first node
-            if(CurrentNode == null){
-                CurrentNode = FirstNode;
+        public bool MoveNext() {
+            if (_currentNode == null) {
+                _currentNode = _lastNode;
             } else {
-                // Assign the Current Node's Previous Node to be the Current Node.
+                _currentNode = _currentNode.Previous;
             }
-            // Return, whether there is a CurrentNode. Else, we have reached the end of the Stack, there's no more Elements.
+            return _currentNode != null;
         }
 
         public T Current {
-            get{
-                throw new NotImplementedException();
-                // Return the Current Node's Value.
+            get {
+                if (_currentNode == null) throw new InvalidOperationException();
+                return _currentNode.Value;
             }
         }
 
-        // This Boiler Plate is necessary to correctly implement `IEnumerable` interface.
         object IEnumerator.Current => Current;
 
         public void Reset() {
-            // Look at Move. How can you make sure that this Enumerator starts over again?
+            _currentNode = null;
         }
 
-        public void Dispose()
-        {
-            // This function is not needed right now.
+        public void Dispose() {
+            // No resources to dispose
         }
     }
 }
